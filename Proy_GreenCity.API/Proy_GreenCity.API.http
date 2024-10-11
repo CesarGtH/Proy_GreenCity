@@ -1,0 +1,6 @@
+@Proy_GreenCity.API_HostAddress = http://localhost:5200
+
+GET {{Proy_GreenCity.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proy_GreenCity.API", "Proy_GreenCity.API\Proy_GreenCity.API.csproj", "{AE5E36E0-7F23-4F34-9822-AFA07756CF43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proy_GreenCity.DOMAIN", "Proy_GreenCity.DOMAIN\Proy_GreenCity.DOMAIN.csproj", "{091CF9AE-1BC5-4A66-AA33-AAD1A0FFE4E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE5E36E0-7F23-4F34-9822-AFA07756CF43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE5E36E0-7F23-4F34-9822-AFA07756CF43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE5E36E0-7F23-4F34-9822-AFA07756CF43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE5E36E0-7F23-4F34-9822-AFA07756CF43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{091CF9AE-1BC5-4A66-AA33-AAD1A0FFE4E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{091CF9AE-1BC5-4A66-AA33-AAD1A0FFE4E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{091CF9AE-1BC5-4A66-AA33-AAD1A0FFE4E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{091CF9AE-1BC5-4A66-AA33-AAD1A0FFE4E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BE7D1358-38ED-472A-8F86-29531A055158}
+	EndGlobalSection
+EndGlobal
