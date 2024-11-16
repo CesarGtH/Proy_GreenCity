@@ -59,22 +59,3 @@ app.UseCors();
 app.MapControllers();
 
 app.Run();
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = "https://tu-issuer.com",
-            ValidAudience = "https://tu-audiencia.com",
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("tu_clave_secreta_super_segura"))
-        };
-    });
-
-var app = builder.Build();
-app.UseAuthentication();
-app.UseAuthorization();
-app.Run();
