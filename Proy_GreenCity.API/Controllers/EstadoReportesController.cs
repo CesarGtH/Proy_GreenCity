@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Proy_GreenCity.DOMAIN.Core.DTO;
 using Proy_GreenCity.DOMAIN.Core.Entities;
 using Proy_GreenCity.DOMAIN.Core.Interfaces;
+using Proy_GreenCity.DOMAIN.Core.Services;
 
 namespace Proy_GreenCity.API.Controllers
 {
@@ -9,39 +11,44 @@ namespace Proy_GreenCity.API.Controllers
     [ApiController]
     public class EstadoReportesController : ControllerBase
     {
-        private readonly IEstadoReportesRepository _estadoreportesRepository;
-        public EstadoReportesController(IEstadoReportesRepository estadoreportesRepository)
+        //private readonly IEstadoReportesRepository _estadoreportesRepository;
+        private readonly IEstadoReportesService _estadoReportesService;
+        //public EstadoReportesController(IEstadoReportesRepository estadoreportesRepository)
+        public EstadoReportesController(IEstadoReportesService estadoReportesService)
         {
-            _estadoreportesRepository = estadoreportesRepository;
+            _estadoReportesService = estadoReportesService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetEstadoReportes()
         {
-            var estadoreportes = await _estadoreportesRepository.GetEstadoReportes();
+            var estadoreportes = await _estadoReportesService.GetEstadoReportes();
             return Ok(estadoreportes);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetEstadoReportesById(int id)
+        public async Task<IActionResult> GetEstadoReportesById(int id,[FromQuery] bool includeReportes)
         {
-            var estadoreportes = await _estadoreportesRepository.GetEstadoReportesById(id);
-            if (estadoreportes == null) return NotFound();
-            return Ok(estadoreportes);
+            if (includeReportes)
+                return Ok(await _estadoReportesService.GetReporteEstadoReportesById(id));
+
+            return Ok(await _estadoReportesService.GetEstadoReportesById(id));
+            
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] EstadoReportes estadoreportes)
+        public async Task<IActionResult> Create([FromBody] EstadoDTO EstadoReportesDTO)
         {
-            int id = await _estadoreportesRepository.Insert(estadoreportes);
+            int id = await _estadoReportesService.Insert(EstadoReportesDTO);
             return Ok(id);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] EstadoReportes estadoreportes)
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] EstadoReportesListDTO
+            EstadoReportesDTO)
         {
-            if (id != estadoreportes.Id) return BadRequest();
-            var result = await _estadoreportesRepository.Update(estadoreportes);
+            if (id != EstadoReportesDTO.Id) return BadRequest();
+            var result = await _estadoReportesService.Update(EstadoReportesDTO);
             if (!result) return BadRequest();
             return Ok(result);
         }
@@ -49,7 +56,7 @@ namespace Proy_GreenCity.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            var result = await _estadoreportesRepository.Delete(id);
+            var result = await _estadoReportesService.Delete(id);
             if (!result) return BadRequest();
             return Ok(result);
         }

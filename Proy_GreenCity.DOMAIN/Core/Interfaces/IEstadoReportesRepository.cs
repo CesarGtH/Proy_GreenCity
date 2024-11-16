@@ -9,5 +9,6 @@ namespace Proy_GreenCity.DOMAIN.Core.Interfaces
         Task<EstadoReportes> GetEstadoReportesById(int id);
         Task<int> Insert(EstadoReportes estadoreportes);
         Task<bool> Update(EstadoReportes estadoreportes);
+        Task<EstadoReportes> GetReporteEstadoReportesById(int id);
     }
 }

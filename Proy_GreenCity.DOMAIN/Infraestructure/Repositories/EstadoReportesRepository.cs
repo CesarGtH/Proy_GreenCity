@@ -57,5 +57,14 @@ namespace Proy_GreenCity.DOMAIN.Infraestructure.Repositories
             int rows = await _dbContext.SaveChangesAsync();
             return rows > 0;
         }
+        public async Task<EstadoReportes> GetReporteEstadoReportesById(int id)
+        {
+            var estadoreportes = await _dbContext
+                .EstadoReportes
+                .Where(u => u.Id == id)
+                .Include(p=>p.Reportes)
+                .FirstOrDefaultAsync();
+            return estadoreportes;
+        }
     }
 }

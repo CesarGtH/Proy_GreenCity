@@ -12,4 +12,5 @@ public partial class EstadoReportes
     public string? Estado { get; set; }
 
     public DateTime? FechaActualizacion { get; set; }
+    public virtual ICollection<Reportes> Reportes { get; set; } = new List<Reportes>();
 }
