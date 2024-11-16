@@ -34,11 +34,11 @@ namespace Proy_GreenCity.DOMAIN.Infraestructure.Repositories
             return usuarios;
         }
 
-        public async Task<int> Insert(Usuarios usuarios)
+        public async Task<bool> Insert(Usuarios usuarios)
         {
             await _dbContext.Usuarios.AddAsync(usuarios);
-            await _dbContext.SaveChangesAsync();
-            return usuarios.Id;
+            int rows = await _dbContext.SaveChangesAsync();
+            return rows > 0;
         }
 
         public async Task<bool> Update(Usuarios usuarios)
@@ -56,6 +56,13 @@ namespace Proy_GreenCity.DOMAIN.Infraestructure.Repositories
             _dbContext.Usuarios.Remove(usuarios);
             int rows = await _dbContext.SaveChangesAsync();
             return rows > 0;
+        }
+        public async Task<Usuarios> SignIn(string email, string pwd)
+        {
+            return await _dbContext
+                .Usuarios
+                .Where(x => x.Email == email && x.Contrasena == pwd)
+                .FirstOrDefaultAsync();
         }
     }
 }

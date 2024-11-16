@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Proy_GreenCity.DOMAIN.Core.DTO;
 using Proy_GreenCity.DOMAIN.Core.Entities;
 using Proy_GreenCity.DOMAIN.Core.Interfaces;
-using Proy_GreenCity.DOMAIN.Core.Services;
 
 namespace Proy_GreenCity.API.Controllers
 {

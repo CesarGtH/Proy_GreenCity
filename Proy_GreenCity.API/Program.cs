@@ -3,6 +3,8 @@ using Proy_GreenCity.DOMAIN.Core.Interfaces;
 using Proy_GreenCity.DOMAIN.Core.Services;
 using Proy_GreenCity.DOMAIN.Infraestructure.Data;
 using Proy_GreenCity.DOMAIN.Infraestructure.Repositories;
+using Proy_GreenCity.DOMAIN.Infraestructure.Shared;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +22,10 @@ builder.Services.AddTransient<INotificacionesRepository, NotificacionesRepositor
 builder.Services.AddTransient<IReportesRepository, ReportesRepository>();
 builder.Services.AddTransient<IRolesRepository, RolesRepository>();
 builder.Services.AddTransient<IUsuariosRepository, UsuariosRepository>();
+builder.Services.AddTransient<IUserService, UserService>();
+
+
+builder.Services.AddSharedInfrastructure(_config);
 builder.Services.AddControllers();
 
 
@@ -49,7 +55,26 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthorization();
-
+app.UseCors();
 app.MapControllers();
 
+app.Run();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = "https://tu-issuer.com",
+            ValidAudience = "https://tu-audiencia.com",
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("tu_clave_secreta_super_segura"))
+        };
+    });
+
+var app = builder.Build();
+app.UseAuthentication();
+app.UseAuthorization();
 app.Run();

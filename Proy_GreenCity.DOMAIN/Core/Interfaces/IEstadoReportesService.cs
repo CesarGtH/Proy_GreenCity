@@ -1,6 +1,6 @@
 ﻿using Proy_GreenCity.DOMAIN.Core.DTO;
 
-namespace Proy_GreenCity.DOMAIN.Core.Services
+namespace Proy_GreenCity.DOMAIN.Core.Interfaces
 {
     public interface IEstadoReportesService
     {
