@@ -19,7 +19,23 @@ namespace Proy_GreenCity.DOMAIN.Infraestructure.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<Usuarios>> GetUsuarios()
+        public async Task<bool> Insert(Usuarios usuarios)
+        {
+            await _dbContext.Usuarios.AddAsync(usuarios);
+            int rows = await _dbContext.SaveChangesAsync();
+            return rows > 0;
+        }
+
+        public async Task<Usuarios> SignIn(string email, string pwd)
+        {
+            return await _dbContext
+                .Usuarios
+                .Where(x => x.Email == email && x.Contrasena == pwd)
+                .FirstOrDefaultAsync();
+        }
+
+
+        /*public async Task<IEnumerable<Usuarios>> GetUsuarios()
         {
             var usuarios = await _dbContext.Usuarios.ToListAsync();
             return usuarios;
@@ -63,6 +79,6 @@ namespace Proy_GreenCity.DOMAIN.Infraestructure.Repositories
                 .Usuarios
                 .Where(x => x.Email == email && x.Contrasena == pwd)
                 .FirstOrDefaultAsync();
-        }
-    }
+        }*/
+    } 
 }

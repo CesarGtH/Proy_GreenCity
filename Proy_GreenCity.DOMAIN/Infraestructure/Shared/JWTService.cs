@@ -33,7 +33,7 @@ namespace Proy_GreenCity.DOMAIN.Infraestructure.Shared
                     new Claim(ClaimTypes.Email, user.Email),
                    // new Claim(ClaimTypes.DateOfBirth, user.DateOfBirth.ToString()),
                     //new Claim(ClaimTypes.Country, user.Country),
-                    new Claim(ClaimTypes.Role, user.RolId == 1 ? "Admin": "User"),
+                    new Claim(ClaimTypes.Role, user.RolId == 1 ? "Admin": "Usuario"),
                     new Claim("UserId",user.Id.ToString()),
                 };
 
