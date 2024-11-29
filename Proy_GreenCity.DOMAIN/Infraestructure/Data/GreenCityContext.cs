@@ -145,7 +145,7 @@ public partial class GreenCityContext : DbContext
 
         modelBuilder.Entity<Usuarios>(entity =>
         {
-            entity.HasNoKey();
+            entity.HasKey(e => e.Id);
 
             entity.Property(e => e.Contrasena)
                 .HasMaxLength(255)
@@ -161,9 +161,7 @@ public partial class GreenCityContext : DbContext
             entity.Property(e => e.FechaCreacion)
                 .HasColumnType("datetime")
                 .HasColumnName("fecha_creacion");
-            entity.Property(e => e.Id)
-                .ValueGeneratedOnAdd()
-                .HasColumnName("id");
+            
             entity.Property(e => e.Nombre)
                 .HasMaxLength(100)
                 .IsUnicode(false)

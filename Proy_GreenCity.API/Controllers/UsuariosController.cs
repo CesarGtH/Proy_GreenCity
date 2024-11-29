@@ -43,7 +43,7 @@ namespace Proy_GreenCity.API.Controllers
                 Email = usuariosRequest.Email,
                 Contrasena = usuariosRequest.Contrasena,
                 Nombre = usuariosRequest.Nombre,
-                RolId = 1
+                RolId = 3
             };
 
             var result = await _usuariosService.Insert(usuarios);
