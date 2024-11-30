@@ -36,7 +36,7 @@ public partial class GreenCityContext : DbContext
     {
         modelBuilder.Entity<Comentarios>(entity =>
         {
-            entity.HasNoKey();
+            entity.HasKey(e => e.Id);
 
             entity.Property(e => e.Contenido)
                 .HasMaxLength(500)
@@ -45,9 +45,7 @@ public partial class GreenCityContext : DbContext
             entity.Property(e => e.FechaCreacion)
                 .HasColumnType("datetime")
                 .HasColumnName("fecha_creacion");
-            entity.Property(e => e.Id)
-                .ValueGeneratedOnAdd()
-                .HasColumnName("id");
+            
             entity.Property(e => e.ReporteId).HasColumnName("reporte_id");
             entity.Property(e => e.UsuarioId).HasColumnName("usuario_id");
         });
@@ -96,7 +94,7 @@ public partial class GreenCityContext : DbContext
 
         modelBuilder.Entity<Reportes>(entity =>
         {
-            entity.HasNoKey();
+            entity.HasKey(e => e.Id);
 
             entity.Property(e => e.Categoria)
                 .HasMaxLength(50)
@@ -114,9 +112,7 @@ public partial class GreenCityContext : DbContext
             entity.Property(e => e.FechaCreacion)
                 .HasColumnType("datetime")
                 .HasColumnName("fecha_creacion");
-            entity.Property(e => e.Id)
-                .ValueGeneratedOnAdd()
-                .HasColumnName("id");
+            
             entity.Property(e => e.Titulo)
                 .HasMaxLength(255)
                 .IsUnicode(false)

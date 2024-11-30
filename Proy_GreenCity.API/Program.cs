@@ -23,6 +23,8 @@ builder.Services.AddTransient<IReportesRepository, ReportesRepository>();
 builder.Services.AddTransient<IRolesRepository, RolesRepository>();
 builder.Services.AddTransient<IUsuariosRepository, UsuariosRepository>();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IReportesService, ReportesService>();
+builder.Services.AddTransient <IComentariosService, ComentariosService>();
 
 
 builder.Services.AddSharedInfrastructure(_config);

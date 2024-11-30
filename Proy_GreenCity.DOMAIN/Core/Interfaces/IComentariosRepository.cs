@@ -7,7 +7,7 @@ namespace Proy_GreenCity.DOMAIN.Core.Interfaces
         Task<bool> Delete(int id);
         Task<IEnumerable<Comentarios>> GetComentarios();
         Task<Comentarios> GetComentariosById(int id);
-        Task<int> Insert(Comentarios comentarios);
+        Task<bool> Insert(Comentarios comentarios);
         Task<bool> Update(Comentarios comentarios);
     }
 }

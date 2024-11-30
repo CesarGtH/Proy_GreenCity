@@ -34,11 +34,11 @@ namespace Proy_GreenCity.DOMAIN.Infraestructure.Repositories
             return reportes;
         }
 
-        public async Task<int> Insert(Reportes reportes)
+        public async Task<bool> Insert(Reportes reportes)
         {
             await _dbContext.Reportes.AddAsync(reportes);
-            await _dbContext.SaveChangesAsync();
-            return reportes.Id;
+            int rowss = await _dbContext.SaveChangesAsync();
+            return rowss > 0;
         }
 
         public async Task<bool> Update(Reportes reportes)

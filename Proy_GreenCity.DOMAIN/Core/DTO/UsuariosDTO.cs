@@ -56,4 +56,10 @@ namespace Proy_GreenCity.DOMAIN.Core.DTO
         public string? Email { get; set; }
         public string? Contrasena { get; set; }
     }
+    public class UserDTO
+    {
+        public int Id { get; set; }
+
+        public string? Nombre { get; set; }
+    }
 }

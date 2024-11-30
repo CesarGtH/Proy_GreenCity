@@ -7,7 +7,7 @@ namespace Proy_GreenCity.DOMAIN.Core.Interfaces
         Task<bool> Delete(int id);
         Task<IEnumerable<Reportes>> GetReportes();
         Task<Reportes> GetReportesById(int id);
-        Task<int> Insert(Reportes reportes);
+        Task<bool> Insert(Reportes reportes);
         Task<bool> Update(Reportes reportes);
     }
 }

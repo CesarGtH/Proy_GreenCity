@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Proy_GreenCity.DOMAIN.Core.Entities;
 
 public partial class Reportes
 {
+    [Key]
     public int Id { get; set; }
 
     public int UsuarioId { get; set; }
@@ -20,4 +22,5 @@ public partial class Reportes
     public DateTime? FechaCreacion { get; set; }
 
     public string? Estado { get; set; }
+
 }

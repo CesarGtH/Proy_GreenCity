@@ -30,12 +30,12 @@ namespace Proy_GreenCity.API.Controllers
             return Ok(comentarios);
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public async Task<IActionResult> Create([FromBody] Comentarios comentarios)
         {
             int id = await _comentariosRepository.Insert(comentarios);
             return Ok(id);
-        }
+        }*/
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] Comentarios comentarios)

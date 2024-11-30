@@ -34,11 +34,11 @@ namespace Proy_GreenCity.DOMAIN.Infraestructure.Repositories
             return comentarios;
         }
 
-        public async Task<int> Insert(Comentarios comentarios)
+        public async Task<bool> Insert(Comentarios comentarios)
         {
             await _dbContext.Comentarios.AddAsync(comentarios);
-            await _dbContext.SaveChangesAsync();
-            return comentarios.Id;
+            int rows =await _dbContext.SaveChangesAsync();
+            return rows > 0;
         }
 
         public async Task<bool> Update(Comentarios comentarios)

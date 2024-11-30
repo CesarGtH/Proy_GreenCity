@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Proy_GreenCity.DOMAIN.Core.DTO;
 using Proy_GreenCity.DOMAIN.Core.Entities;
 using Proy_GreenCity.DOMAIN.Core.Interfaces;
+using Proy_GreenCity.DOMAIN.Core.Services;
 
 namespace Proy_GreenCity.API.Controllers
 {
@@ -14,6 +16,7 @@ namespace Proy_GreenCity.API.Controllers
         {
             _reportesRepository = reportesRepository;
         }
+
 
         [HttpGet]
         public async Task<IActionResult> GetReportes()
@@ -30,12 +33,12 @@ namespace Proy_GreenCity.API.Controllers
             return Ok(reportes);
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public async Task<IActionResult> Create([FromBody] Reportes reportes)
         {
             int id = await _reportesRepository.Insert(reportes);
             return Ok(id);
-        }
+        }*/
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] Reportes reportes)
